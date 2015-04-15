@@ -21,4 +21,9 @@ feature = ['forecast']
 # store the url in url_string
 url_string = 'http://api.wunderground.com/api/' + api_key + '/' + convert_to_urlstring(feature) + '/q/' + convert_to_urlstring(query) +'.json'
 
-print url_string
+#opening the file and loading it as json
+
+f = urllib2.urlopen(url_string)
+weather_file = json.loads(f.read())
+
+print weather_file
