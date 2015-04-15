@@ -26,4 +26,7 @@ url_string = 'http://api.wunderground.com/api/' + api_key + '/' + convert_to_url
 f = urllib2.urlopen(url_string)
 weather_file = json.loads(f.read())
 
-print weather_file
+current_data = weather_file['forecast']['txt_forecast']['forecastday']
+print 'Your 3 day forecast is: \n\n'
+for e in current_data:
+	print '%s : %s\n' %(e['title'], e['fcttext'])
